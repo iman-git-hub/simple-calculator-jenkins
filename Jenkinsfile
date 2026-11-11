@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    
+    tools {
+		jdk 'JDK 21'
+		maven 'Maven-3.10'
+	}
 
     stages {
         stage('SCM Synchronization') {
@@ -19,7 +24,7 @@ pipeline {
         stage('Compilation & Automated Testing') {
             steps {
                 echo 'Compiling project and running automated tests...'
-                bat 'mvn clean package'
+                bat '"C:\\Users\\Student-A\\Downloads\\apache-maven-3.10.0-bin (1)\\apache-maven-3.10.0\\bin\\mvn.cmd" clean package'
             }
             post {
                 always {
