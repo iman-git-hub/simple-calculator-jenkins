@@ -24,7 +24,7 @@ pipeline {
         stage('Compilation & Automated Testing') {
             steps {
                 echo 'Compiling project and running automated tests...'
-                bat '"C:\\Users\\Student-A\\Downloads\\apache-maven-3.10.0-bin (1)\\apache-maven-3.10.0\\bin\\mvn.cmd" clean package'
+                bat 'clean package'
             }
             post {
                 always {
