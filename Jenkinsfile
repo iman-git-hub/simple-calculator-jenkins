@@ -17,7 +17,7 @@ pipeline {
         stage('Static Verification') {
             steps {
                 echo 'Checking Maven project layout rules...'
-                bat '"C:\\Users\\Student-A\\Downloads\\apache-maven-3.10.0-bin (1)\\apache-maven-3.10.0\\bin\\mvn.cmd" validate'
+                bat 'mvn validate'
             }
         }
 
