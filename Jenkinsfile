@@ -24,7 +24,7 @@ pipeline {
         stage('Compilation & Automated Testing') {
             steps {
                 echo 'Compiling project and running automated tests...'
-                bat 'clean package'
+                bat 'mvn clean package'
             }
             post {
                 always {
