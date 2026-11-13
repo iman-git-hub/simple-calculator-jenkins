@@ -37,10 +37,10 @@ pipeline {
 
     post {
         success {
-            echo 'CI Pipeline completed successfully. Code stability confirmed.'
+            echo ' CI Pipeline is completed successfully. Code stability confirmed.'
         }
         failure {
-            echo 'CI Pipeline failed. Check the console output for errors.'
+            echo ' CI Pipeline is failed. Check the console output for errors.'
         }
     }
 }
