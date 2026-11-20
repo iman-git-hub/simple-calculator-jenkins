@@ -1,20 +1,29 @@
-package com.calculator;
+package com.simple_calculator_jenkins;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
-    private final Calculator calc = new Calculator();
+    Calculator calculator = new Calculator();
 
     @Test
-    public void testAdd() {
-        assertEquals(8, calc.add(5, 3));
+    public void testAddition() {
+        assertEquals(8, calculator.add(5, 3));
     }
 
     @Test
-    public void testSubtract() {
-        assertEquals(2, calc.subtract(5, 3));
+    public void testSubtraction() {
+        assertEquals(2, calculator.subtract(5, 3));
+    }
+
+    @Test
+    public void testPositiveNumber() {
+        assertTrue(calculator.isPositive(5));
+    }
+
+    @Test
+    public void testNegativeNumber() {
+        assertFalse(calculator.isPositive(-5));
     }
 }
