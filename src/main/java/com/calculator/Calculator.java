@@ -1,4 +1,4 @@
-package com.Calculator_Jenkins;
+package com.simple_calculator_jenkins;
 public class Calculator {
     public int add(int a, int b) { 
         return a + b; 
