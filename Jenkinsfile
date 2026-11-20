@@ -1,35 +1,48 @@
 pipeline {
     agent any
     
+    
+    // Use tools Name configured in Jenkins
     tools {
-		jdk 'JDK 25'
-		maven 'Maven-3.10'
-	}
+        jdk 'JDK 25'
+        maven 'Maven-3.10'
+    }
+
 
     stages {
         stage('SCM Synchronization') {
             steps {
-                echo 'Pulling latest code changes from Git repository...'
+                echo '📥 Pulling latest code changes from Git repository...'
                 checkout scm
             }
         }
 
         stage('Static Verification') {
             steps {
-                echo 'Checking Maven project layout rules...'
+                echo '🔍 Checking Maven project layout rules...'
                 bat 'mvn validate'
             }
         }
 
         stage('Compilation & Automated Testing') {
             steps {
-                echo 'Compiling project and running automated tests...'
+                echo '⚙️ Compiling class layers and verifying test logic stability...'
                 bat 'mvn clean package'
             }
             post {
                 always {
-                    echo 'Publishing unit test reports to Jenkins...'
+                    echo '📊 Publishing Unit Test trends to Jenkins Dashboard...'
                     junit '**/target/surefire-reports/*.xml'
+                }
+            }
+        }
+  
+
+    stage('SonarQube Analysis') {
+            steps {
+                echo 'Starting SonarQube analysis'
+                withSonarQubeEnv('SonarQube-Local') {
+                    bat 'mvn sonar:sonar'
                 }
             }
         }
@@ -37,10 +50,11 @@ pipeline {
 
     post {
         success {
-            echo ' CI Pipeline is completed successfully. Code stability confirmed.'
+            echo 'Build and SonarQube analysis completed!'
         }
         failure {
-            echo ' CI Pipeline is failed. Check the console output for errors.'
+            echo 'Pipeline failed. Check Console Output.'
         }
     }
+
 }
